@@ -10,8 +10,9 @@ import java.util.List;
 
 public class ModuleBusiness {
     private static List<Module> modules;
-private UniteEnseignementBusiness uniteEnseignementBusiness=new UniteEnseignementBusiness();
+    private UniteEnseignementBusiness uniteEnseignementBusiness=new UniteEnseignementBusiness();
     public ModuleBusiness() {
+        if (modules != null) return;
         modules = new ArrayList<Module>();
         // Initialisation avec quelques données de test
         modules.add(new Module("M101", "Algorithmique", 3, 30, Module.TypeModule.PROFESSIONNEL,uniteEnseignementBusiness.getUEByCode(1)));
@@ -23,13 +24,13 @@ private UniteEnseignementBusiness uniteEnseignementBusiness=new UniteEnseignemen
     public boolean addModule(Module module) {
 
         int code=module.getUniteEnseignement().getCode();
-       UniteEnseignement ue=uniteEnseignementBusiness.getUEByCode(code);
-       if(ue!=null){
-           module.setUniteEnseignement(ue);
-           return modules.add(module);
-    }
+        UniteEnseignement ue=uniteEnseignementBusiness.getUEByCode(code);
+        if(ue!=null){
+            module.setUniteEnseignement(ue);
+            return modules.add(module);
+        }
         return false;
-}
+    }
 
     // Récupérer un module par son matricule
     public Module getModuleByMatricule(String matricule) {

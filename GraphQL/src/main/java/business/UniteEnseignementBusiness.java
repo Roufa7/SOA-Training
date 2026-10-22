@@ -11,6 +11,7 @@ public class UniteEnseignementBusiness {
     private static List<UniteEnseignement> unitesEnseignement;
 
     public UniteEnseignementBusiness() {
+        if (unitesEnseignement != null) return;
         unitesEnseignement = new ArrayList<UniteEnseignement>();
         // Initialisation avec quelques exemples
         unitesEnseignement.add(new UniteEnseignement(1, "Informatique", "Mme Maroua Douiri", 6, 1));
