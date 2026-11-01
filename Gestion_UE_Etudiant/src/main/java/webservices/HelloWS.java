@@ -9,6 +9,11 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response; //JAX-RS
 @Path("/hello")
 public class HelloWS {
+    @Path("/public")
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response publicHello() { return Response.ok("hello public").build(); }
+
     //ws 1=>API: Return a hello msg
     @Secured
     @Path("/hi") //URL for the web service

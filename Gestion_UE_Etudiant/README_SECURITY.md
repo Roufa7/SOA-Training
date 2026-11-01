@@ -18,8 +18,10 @@ Avec jeton valide et données acceptées par le métier : 201.
 GET /ue/list conserve sa protection existante.
 Les autres lectures restent publiques ; un jeton invalide ne les protège pas automatiquement.
 
-Validation à réaliser sur le serveur : connexion formulaire et JSON, mauvais mot de passe,
+Scénarios validés sur le serveur (voir VALIDATION.md) : connexion formulaire et JSON, mauvais mot de passe,
 création sans jeton, avec jeton valide, altéré, puis expiré après 15 minutes.
 Vérifier une lecture publique avec jeton invalide : elle doit rester accessible.
 Ne pas publier de mots de passe ni de jetons réels. Les deux premiers segments du JWT
 peuvent être décodés localement en Base64URL : le contenu est lisible, pas chiffré.
+
+GET /hello/public est public. `mvn test` vérifie notamment le rejet d’un JWT expiré correctement signé. Le script `tests/verify_rest.py` reproduit les vérifications HTTP.

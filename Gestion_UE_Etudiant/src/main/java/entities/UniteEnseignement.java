@@ -1,5 +1,6 @@
 package entities;
 
+@javax.xml.bind.annotation.XmlRootElement
 public class UniteEnseignement {
     private int code;
     private String domaine;
