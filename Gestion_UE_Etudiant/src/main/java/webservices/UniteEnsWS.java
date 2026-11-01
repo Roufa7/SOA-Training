@@ -22,8 +22,9 @@ public class UniteEnsWS {
                 .build();
     }
     @Path("/add")
+    @Secured
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.TEXT_PLAIN)
     public Response addUE(UniteEnseignement ue){
         if(helper.addUniteEnseignement(ue)==true){
@@ -34,6 +35,7 @@ public class UniteEnsWS {
     }
 
     @Path("/delete/{id}")
+    @Secured
     @DELETE
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteUE(@PathParam("id") int code){
@@ -46,8 +48,9 @@ public class UniteEnsWS {
     }
 
     @Path("/update/{id}")
+    @Secured
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateUE(UniteEnseignement ue,@PathParam("id") int code){
         if(helper.updateUniteEnseignement(code,ue)==true){

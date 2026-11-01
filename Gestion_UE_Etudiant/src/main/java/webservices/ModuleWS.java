@@ -21,6 +21,7 @@ public class ModuleWS {
     }
 
     @Path("/add")
+    @Secured
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
